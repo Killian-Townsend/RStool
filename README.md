@@ -1,4 +1,6 @@
-# RStool
+# RStool - Beta
+#### The uncompressed code, and possibly buggy code for RStool 
+
 ## An OpenComputers Refined Storage Manager
 
 Monitors and maintains your Refined Storage Network!
