@@ -24,6 +24,17 @@ local configPath = "/etc/rstool.cfg"
 
 -- Functions
 print("Loading Functions")
+local function exit()
+  term.clear()
+  print("Exiting...")
+  os.sleep(2.5)
+  gpu.setResolution(rX, rY)
+  gpu.setBackground(0x000000)
+  gpu.setForeground(0xFFFFFF)
+  term.clear()
+os.exit()
+end
+
 local function round(num, numDecimalPlaces)
   local mult = 10^(numDecimalPlaces or 0)
   return math.floor(num * mult) / mult
@@ -119,9 +130,8 @@ if not fs.exists(configPath) then
   print("The config file could not be found at")
   print(configPath)
   os.sleep(5)
-  goto exit
+  exit()
 end
-
 local cfg,msg = io.open(configPath, "rb")
 if not file then
   print(" ")
@@ -131,7 +141,7 @@ if not file then
   print(configPath)
   print(msg)
   os.sleep(5)
-  goto exit
+  exit()
 end
 cfg = serial.unserialize(cfg)
 local stacks = cfg.stacks
@@ -174,95 +184,6 @@ gpu.setForeground(0xFFFFFF)
 os.sleep(1)
 term.clear()
 gpu.setResolution(20, 20)
-
-
--- Functions
-function round(num, numDecimalPlaces)
-  local mult = 10^(numDecimalPlaces or 0)
-  return math.floor(num * mult) / mult
-end
-
-function roundItemValue(num, bool)
-  local out
-  if(num > 999999999) then
-    -- 1B
-    num = num / 1000000000
-    num = round(num, 1)
-    out = num .. "B"
-  elseif(num > 999999) then
-    -- 1M
-    num = num / 1000000
-    num = round(num, 1)
-    out = num .. "M"
-  elseif(num > 999) then
-    -- 1K
-    num = num / 1000
-    num = round(num, 1)
-    out = num .. "K"
-  else
-    out = round(num, 0)
-  end
-  if(bool) then
-    out = "       " .. out
-    out = string.sub(out, -7)
-  end
-  return out
-end
-
-function getItemSize(table)
-  local num = 0
-  for i, item in ipairs(table) do
-    num = num + item.size
-  end
-  return num
-end
-
-function getFluidSize(table)
-  local num = 1000
-  for i, item in ipairs(table) do
-    num = num + item.amount
-  end
-  return num / 1000
-end
-
-function getItemBar()
-  
-end
-
-function getTime(time)
-  -- 00:00:00:00
-  local sec  = "00"
-  local min  = "00"
-  local hour = "00"
-  local day  = "00"
-  -- Seconds
-  if(time > 59) then
-    sec = string.sub("00" .. (time - (round(time / 60) * 60)), -4, -3)
-  else
-    sec = string.sub("00" .. time, -2)
-  end
-  -- Minutes
-  if(time > 60) then
-    min = string.sub("00" .. round(time / 60), -4, -3)
-  else
-    min = "00"
-  end
-  -- Hours
-  if(time > 3600) then
-    hour = string.sub("00" .. round(time / 60 / 60), -4, -3)
-  else
-    hour = "00"
-  end
-  -- Days
-  if(time > 86400) then
-    day = string.sub("00" .. round(time / 60 / 60 / 24), -4, -3)
-  else
-    day = "00"
-  end
-  return day..":"..hour..":"..min..":"..sec
-end
-
-
 
 
 
@@ -336,9 +257,4 @@ end
 
 
 -- Exit Process
-::exit::
-os.sleep(2.5)
-gpu.setResolution(rX, rY)
-gpu.setBackground(0x000000)
-gpu.setForeground(0xFFFFFF)
-term.clear()
+exit()
