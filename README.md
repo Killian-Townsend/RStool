@@ -26,7 +26,7 @@ Main screen shows
 
 ![Image Showing Program Screen](https://github.com/kittypickles9982/RStool/raw/master/screenExample.png)
 
-In `config.cfg`, you set
+In `RStool.cfg`, you set
 - What items you want to export, if any
 - Max network fluid capactity
 - Max network item capacity
