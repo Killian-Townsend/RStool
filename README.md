@@ -3,9 +3,7 @@
 
 Monitors and maintains your Refined Storage Network!
 
-If you're running Minecraft 1.10, you need the [OC-RS driver](https://www.curseforge.com/minecraft/mc-mods/open-computers-refined-storage-driver), oherwise it's built into Refined Storage 1.11+
-
-
+If you're running Minecraft 1.10, you need the [OC-RS driver](https://www.curseforge.com/minecraft/mc-mods/open-computers-refined-storage-driver), oherwise it's built into Refined Storage 1.11+</br></br>
 
 ### Installing
 You need OPPM installed to install the package
@@ -33,10 +31,10 @@ In `config.cfg`, you set
 - Max network fluid capactity
 - Max network item capacity
 
-In stacks, you put the items you want it to export and monitor
-A stack is a table used by RS to define items
-Not all categories are required, the ones you put in are the ones, the program will search for
-Example Fluid: `{name="water", label="Water", amount=1000.0}`
+In stacks, you put the items you want it to export and monitor</br>
+A stack is a table used by RS to define items</br>
+Not all categories are required, the ones you put in are the ones, the program will search for</br>
+Example Fluid: `{name="water", label="Water", amount=1000.0}`</br>
 Example Item: `{name="minecraft:dirt", size=1234, label="Dirt"}`
 
 Example config
@@ -51,7 +49,7 @@ Example config
   output = sides.south
 }
 ```
-You can hold left control to exit the program
+You can hold left control to exit the program</br></br>
 
 ### Future Plans
 - [ ] Make progress bars work |----------------| Intermediate
