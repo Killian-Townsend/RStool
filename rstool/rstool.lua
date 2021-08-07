@@ -1,4 +1,10 @@
+require("term").clear()
+print("Loading...")
+os.sleep(0.5)
+print(" ")
+
 -- Libs
+print("Loading Required Libraries")
 local sides = require("sides")
 local component = require("component")
 local serial = require("serialization")
@@ -9,10 +15,15 @@ local keyboard = require("keyboard")
 local fs = require("filesystem")
 local io = require("io")
 -- Components
+print("Loading Components")
 local rs = component.block_refinedstorage_interface
 local gpu = component.gpu
 
+-- Variables
+local configPath = "/etc/rstool.cfg"
+
 -- Functions
+print("Loading Functions")
 local function round(num, numDecimalPlaces)
   local mult = 10^(numDecimalPlaces or 0)
   return math.floor(num * mult) / mult
@@ -96,7 +107,33 @@ end
 
 
 --- Load Config
-local cfg = require("/etc/rstool.cfg")
+print("Loading Config")
+if not fs.exists(configPath) then
+  local tProcess = os.getenv("_")
+  configPath = fs.concat(fs.path(shell.resolve(tProcess)),"/etc/oppm.cfg")
+end
+if not fs.exists(configPath) then
+  print(" ")
+  gpu.setForeground(0xFF0000)
+  print("Error!")
+  print("The config file could not be found at")
+  print(configPath)
+  os.sleep(5)
+  goto exit
+end
+
+local cfg,msg = io.open(configPath, "rb")
+if not file then
+  print(" ")
+  gpu.setForeground(0xFF0000)
+  print("Error!")
+  print("The config file could not be loaded")
+  print(configPath)
+  print(msg)
+  os.sleep(5)
+  goto exit
+end
+cfg = serial.unserialize(cfg)
 local stacks = cfg.stacks
 local maxItems = cfg.maxItems
 local maxFluids = cfg.maxFluids
@@ -106,13 +143,6 @@ local output = cfg.output
 -- Screen Init
 local rX, rY = gpu.getResolution()
 term.clear()
-
-
-print("Loading...")
-os.sleep(0.5)
-print(" ")
-
-
 
 -- Get Items
 local count = 0
@@ -304,7 +334,9 @@ while(true) do
   os.sleep(1)
 end
 
+
 -- Exit Process
+::exit::
 os.sleep(2.5)
 gpu.setResolution(rX, rY)
 gpu.setBackground(0x000000)
