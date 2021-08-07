@@ -96,7 +96,7 @@ end
 
 
 --- Load Config
-local cfg = require("//etc/rstool.cfg")
+local cfg = require("/etc/rstool.cfg")
 local stacks = cfg.stacks
 local maxItems = cfg.maxItems
 local maxFluids = cfg.maxFluids
