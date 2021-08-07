@@ -25,14 +25,11 @@ local configPath = "/etc/rstool.cfg"
 -- Functions
 print("Loading Functions")
 local function exit()
-  term.clear()
-  print("Exiting...")
-  os.sleep(2.5)
   gpu.setResolution(rX, rY)
   gpu.setBackground(0x000000)
   gpu.setForeground(0xFFFFFF)
   term.clear()
-os.exit()
+  os.exit()
 end
 
 local function round(num, numDecimalPlaces)
