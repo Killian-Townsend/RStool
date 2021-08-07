@@ -26,7 +26,7 @@ Main screen shows
 - Items moved that second
 - Time the program has been running
 
-![Image Showing Program Screen](https://github.com/kittypickles9982/RStool/raw/main/screenExample.png)
+![Image Showing Program Screen](https://github.com/kittypickles9982/RStool/raw/beta/screenExample.png)
 
 In `config.cfg`, you set
 - What items you want to export, if any
