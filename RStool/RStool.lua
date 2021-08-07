@@ -11,15 +11,92 @@ local io = require("io")
 -- Components
 local rs = component.block_refinedstorage_interface
 local gpu = component.gpu
+
 -- Functions
-local getFluidSize = require("/func/getFluidSize").getFluidSize
-local getItemSize = require("/func/getItemSize").getItemSize
-local getTime = require("/func/getTime").getTime
-local roundItemValue = require("/func/roundItemValue").roundItemValue
-local round = require("/func/round").round
+local function round(num, numDecimalPlaces)
+  local mult = 10^(numDecimalPlaces or 0)
+  return math.floor(num * mult) / mult
+end
+
+local function getFluidSize(table)
+  local num = 1000
+  for i, item in ipairs(table) do
+    num = num + item.amount
+  end
+  return num / 1000
+end
+
+local function getItemSize(table)
+  local num = 0
+  for i, item in ipairs(table) do
+    num = num + item.size
+  end
+  return num
+end
+
+local function getTime(time)
+  -- 00:00:00:00
+  local sec  = "00"
+  local min  = "00"
+  local hour = "00"
+  local day  = "00"
+  -- Seconds
+  if(time > 59) then
+    sec = string.sub("00" .. (time - (round(time / 60) * 60)), -4, -3)
+  else
+    sec = string.sub("00" .. time, -2)
+  end
+  -- Minutes
+  if(time > 60) then
+    min = string.sub("00" .. round(time / 60), -4, -3)
+  else
+    min = "00"
+  end
+  -- Hours
+  if(time > 3600) then
+    hour = string.sub("00" .. round(time / 60 / 60), -4, -3)
+  else
+    hour = "00"
+  end
+  -- Days
+  if(time > 86400) then
+    day = string.sub("00" .. round(time / 60 / 60 / 24), -4, -3)
+  else
+    day = "00"
+  end
+  return day..":"..hour..":"..min..":"..sec
+end
+
+local function roundItemValue(num, bool)
+  local out
+  if(num > 999999999) then
+    -- 1B
+    num = num / 1000000000
+    num = round(num, 1)
+    out = num .. "B"
+  elseif(num > 999999) then
+    -- 1M
+    num = num / 1000000
+    num = round(num, 1)
+    out = num .. "M"
+  elseif(num > 999) then
+    -- 1K
+    num = num / 1000
+    num = round(num, 1)
+    out = num .. "K"
+  else
+    out = round(num, 0)
+  end
+  if(bool) then
+    out = "       " .. out
+    out = string.sub(out, -7)
+  end
+  return out
+end
+
 
 --- Load Config
-local cfg = require "config"
+local cfg = require("//etc/RStool.cfg")
 local stacks = cfg.stacks
 local maxItems = cfg.maxItems
 local maxFluids = cfg.maxFluids
