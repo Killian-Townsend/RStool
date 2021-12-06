@@ -14,6 +14,7 @@ local string = require("string")
 local keyboard = require("keyboard")
 local fs = require("filesystem")
 local io = require("io")
+local shell = require("shell");
 -- Components
 print("Loading Components")
 local rs = component.block_refinedstorage_interface
