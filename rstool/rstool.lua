@@ -133,8 +133,8 @@ end
 local cfg,msg = io.open(configPath, "rb")
 if not file then
   print(" ")
-  gpu.setForeground(0xFF0000)`
-  print("Error!")`
+  gpu.setForeground(0xFF0000)
+  print("Error!")
   print("The config file could not be loaded")
   print(configPath)
   print(msg)
