@@ -21,6 +21,8 @@ local gpu = component.gpu
 
 -- Variables
 local configPath = "/etc/rstool.cfg"
+local rX, rY = gpu.getResolution()
+
 
 -- Functions
 print("Loading Functions")
