@@ -118,10 +118,10 @@ end
 
 --- Load Config
 print("Loading Config")
-if not fs.exists(configPath) then
-  local tProcess = os.getenv("_")
-  configPath = fs.concat(fs.path(shell.resolve(tProcess)),"/etc/oppm.cfg")
-end
+--if not fs.exists(configPath) then
+--  local tProcess = os.getenv("_")
+--  configPath = fs.concat(fs.path(shell.resolve(tProcess)),"/etc/oppm.cfg")
+--end
 if not fs.exists(configPath) then
   print(" ")
   gpu.setForeground(0xFF0000)
