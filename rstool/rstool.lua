@@ -21,7 +21,7 @@ local rs = component.block_refinedstorage_interface
 local gpu = component.gpu
 
 -- Variables
-local configPath = "/etc/rstools.cfg"
+local configPath = "/etc/rstool.cfg"
 
 
 -- Functions
