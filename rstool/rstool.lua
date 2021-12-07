@@ -1,4 +1,5 @@
 require("term").clear()
+local rX, rY = gpu.getResolution()
 print("Loading...")
 os.sleep(0.5)
 print(" ")
@@ -150,7 +151,6 @@ local output = cfg.output
 
 
 -- Screen Init
-local rX, rY = gpu.getResolution()
 term.clear()
 
 -- Get Items
