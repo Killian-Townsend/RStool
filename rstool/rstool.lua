@@ -183,7 +183,7 @@ print("Ready!")
 gpu.setForeground(0xFFFFFF)
 os.sleep(1)
 term.clear()
-gpu.setResolution(20, 20)
+--gpu.setResolution(20, 20)
 
 
 
