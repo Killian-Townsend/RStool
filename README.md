@@ -9,7 +9,7 @@ If you're running Minecraft 1.10, you need the [OC-RS driver](https://www.cursef
 You need OPPM installed to install the package
 
 Steps to install
-1. `oppm register kittypickles9982/RStool`
+1. `oppm register Killian-Townsend/RStool`
 2. `oppm install RStool`
 3. Done!
 

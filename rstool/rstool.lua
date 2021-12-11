@@ -1,5 +1,4 @@
 require("term").clear()
-local rX, rY = gpu.getResolution()
 print("Loading...")
 os.sleep(0.5)
 print(" ")
@@ -20,6 +19,7 @@ local shell = require("shell");
 print("Loading Components")
 local rs = component.block_refinedstorage_interface
 local gpu = component.gpu
+local rX, rY = gpu.getResolution()
 
 -- Variables
 local configPath = "/etc/rstool.cfg"
