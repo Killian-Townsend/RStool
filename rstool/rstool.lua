@@ -148,7 +148,8 @@ end
 local stacks = {"minecraft:bone"}
 local maxItems = 512000+512000+512000+326000+131000
 local maxFluids = 2240000
-local output = sides.south
+local output = sides.west
+local input = sides.north
 
 
 -- Screen Init
