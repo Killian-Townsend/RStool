@@ -118,37 +118,37 @@ end
 
 
 --- Load Config
-print("Loading Config")
-if not fs.exists(configPath) then
-  local tProcess = os.getenv("_")
-  configPath = fs.concat(fs.path(shell.resolve(tProcess)),"/etc/oppm.cfg")
-end
-if not fs.exists(configPath) then
-  print(" ")
-  gpu.setForeground(0xFF0000)
-  print("Error!")
-  print("The config file could not be found at")
-  print(configPath)
-  os.sleep(5)
-  exit()
-end
-print(configPath)
-local cfg,msg = io.open(configPath, "r")
-if not file then
-  print(" ")
-  gpu.setForeground(0xFF0000)
-  print("Error!")
-  print("The config file could not be loaded")
-  print(configPath)
-  print(msg)
-  os.sleep(5)
-  exit()
-end
-cfg = serial.unserialize(cfg)
-local stacks = cfg.stacks
-local maxItems = cfg.maxItems
-local maxFluids = cfg.maxFluids
-local output = cfg.output
+--print("Loading Config")
+--if not fs.exists(configPath) then
+--  local tProcess = os.getenv("_")
+--  configPath = fs.concat(fs.path(shell.resolve(tProcess)),"/etc/oppm.cfg")
+--end
+--if not fs.exists(configPath) then
+--  print(" ")
+--  gpu.setForeground(0xFF0000)
+--  print("Error!")
+--  print("The config file could not be found at")
+--  print(configPath)
+--  os.sleep(5)
+--  exit()
+--end
+--print(configPath)
+--local cfg,msg = io.open(configPath, "r")
+--if not file then
+--  print(" ")
+--  gpu.setForeground(0xFF0000)
+--  print("Error!")
+--  print("The config file could not be loaded")
+--  print(configPath)
+--  print(msg)
+--  os.sleep(5)
+--  exit()
+--end
+--cfg = serial.unserialize(cfg)
+local stacks = {"minecraft:bone"}
+local maxItems = 512000+512000+512000+326000+131000
+local maxFluids = 2240000
+local output = sides.south
 
 
 -- Screen Init
