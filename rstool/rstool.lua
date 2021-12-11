@@ -243,9 +243,7 @@ while(true) do
     if(stack.size < 129) then
       goto continue
     end
-    
 
-    local stack = rs.getItem(nstack)
     -- Move items
     local extract = rs.extractItem(stack, 64, output)
     carryNum = carryNum + extract    
