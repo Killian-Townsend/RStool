@@ -236,14 +236,16 @@ while(true) do
   -- Move Stuff
   carryNum = 0
   for i,nstack in ipairs(stacks) do
-  
-    local stack = rs.getItem(nstack)
-    
+
+    local stack = rs.getItem({name=nstack})
+
     -- If Amount is less than 129 skip
     if(stack.size < 129) then
       goto continue
     end
     
+
+    local stack = rs.getItem(nstack)
     -- Move items
     local extract = rs.extractItem(stack, 64, output)
     carryNum = carryNum + extract    
