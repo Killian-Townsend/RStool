@@ -14,7 +14,7 @@ local string = require("string")
 local keyboard = require("keyboard")
 local fs = require("filesystem")
 local io = require("io")
-local shell = require("shell");
+local shell = require("shell")
 -- Components
 print("Loading Components")
 local rs = component.block_refinedstorage_interface
@@ -132,7 +132,8 @@ if not fs.exists(configPath) then
   os.sleep(5)
   exit()
 end
-local cfg,msg = io.open(configPath, "rb")
+print(configPath)
+local cfg,msg = io.open(configPath, "r")
 if not file then
   print(" ")
   gpu.setForeground(0xFF0000)
